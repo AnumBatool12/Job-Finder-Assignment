@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan">
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <title>Frontend Mentor | Job Listings</title>
     <title>Document</title>
 </head>
@@ -50,5 +50,12 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function(){
+        $.getJSON("data.json", function(data){
+                console.log(data); 
+            }).fail(function(){console.log("An error has occurred.");});
+        });
+    </script>
 </body>
 </html>
