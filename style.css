@@ -1,0 +1,231 @@
+/*Universal Setting*/
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    background-color: hsl(180, 52%, 96%);
+}
+/*Universal Setting*/
+
+/*Header Settings*/
+header{
+    background-image: url("./images/bg-header-desktop.svg");
+    background-color: hsl(180, 29%, 50%);
+    height: 156px; /*Same as height of image*/
+}
+
+@media screen and (max-width: 375px){
+    header{
+        background-image: url("./images/bg-header-mobile.svg");
+    }
+}
+/*Header Settings*/
+
+/*Settings for main div*/
+.flexBody{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/*Settings for main div*/
+
+/*Settings for filter div*/
+/*Settings for filter div*/
+
+/*Setting for job container div*/
+.job{
+    width:85%;
+    margin-top: 24px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 5px 15px 0px hsl(180, 30%, 80%);
+}
+
+/*Setting for hover*/
+.job:hover{
+    box-shadow: 5px 5px 10px 0px hsl(180, 8%, 52%);
+    border-left: 5px solid hsl(180, 29%, 50%);
+}
+/*Setting for hover*/
+/*Setting for job-container div*/
+
+/*Settings for job flex*/
+.flexJob{
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content:safe;
+    align-items: center;
+    padding: 25px;
+    font-family: 'League Spartan', serif;
+}
+/*Settings for job fle*/
+
+/*Settings for Image*/
+div .jobImage{
+    float: right;
+    padding-left: 2%;
+    padding-right: 2.5%;
+}
+
+/*Settings for Image*/
+
+/*Settings for Job Title*/
+div .flexTitle{
+    display: flex;
+    flex-direction: column;
+    min-height: 88px;
+    width: max-content;
+}
+
+div .compTitles{
+    padding-bottom: 15px;
+}
+
+/*Settings for Company Name*/
+div .compName{
+    font-size: 15px;
+    color: hsl(180, 29%, 50%);
+    padding-right: 1%;
+    font-weight: 600;
+}
+/*Settings for Company Name*/
+
+/*Settings for New and Feature*/
+div .info{
+    border-radius: 20px;
+    font-size: 12px;
+    color: white;
+    padding: 5px;
+    font-weight: 700;
+}
+
+div .new{
+    background-color: hsl(180, 29%, 50%);
+}
+
+div .feat{
+    background-color: black;
+}
+
+@media screen and (max-width: 685px) {
+    .new{
+        display: inline-block;
+    }
+
+    .feat{
+        display: inline-block;
+    }
+
+}
+/*Settings for New and Featured*/
+
+/*Settings for Job Heading*/
+div .title{
+    color: black;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+div .title:hover{
+    color: hsl(180, 29%, 50%);
+}
+
+/*Settings for Info List*/
+/*Settings for Job Heading*/
+div .posDetails{
+    font-size: 14px;
+    font-weight: 550;
+    color: hsl(180, 8%, 52%);
+}
+
+.list{
+    display: flex;   
+    justify-content: space-between;
+}
+
+.first{
+    list-style-type: none;
+}
+
+@media screen and (max-width:600px) {
+    .list{
+        flex-direction: column;
+    }
+
+    div ul li{
+        margin-bottom: 2px;
+    }
+}
+/*Settings for Info List*/
+/*Settings for Job Title*/
+
+/*Settings for Tools and Skills*/
+.flexTools{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    flex: content;
+}
+
+.btnSettings{
+    font-size: 12px;
+    color: hsl(180, 29%, 50%);
+    background-color: hsl(180, 31%, 95%);
+    font-weight: 600;
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.btn{
+    margin: 1%;
+}
+
+.btnSettings:hover{
+    color: white;
+    background-color: hsl(180, 29%, 50%);
+}
+/*Settings for Tools and Skills*/
+
+/*Settings for responsive*/
+@media screen and (max-width: 375px) {
+    .job{
+        margin-top: 20%;
+        flex-wrap: wrap;
+    }
+
+    .jobImage{
+        position: absolute;
+        top: -15%;
+    }
+
+    img{
+        width: 55px;
+        height: 55px;
+    }
+
+    .flexJob{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .list{
+        flex-direction: row;
+    }
+
+    .flexTools{
+        justify-content: flex-start;
+        border-top: 1px solid hsl(180, 29%, 50%);
+        margin-top: 10px;
+    }
+
+    .btn{
+        margin-top: 10px;
+    }
+}
+/*Settings for responsive*/
