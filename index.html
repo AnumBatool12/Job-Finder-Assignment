@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
+    <!-- -->
     <title>Frontend Mentor | Job Listings</title>
     <title>Document</title>
 </head>
@@ -17,7 +18,7 @@
     <div class="flexBody"><!--Rest of the body (position relative)-->
         <div class="filter"><!--This is for the filter section(position absolute)--></div>
 
-        <div class="job"><!--Job listings White container-->
+        <div class="job" style="display: none;"><!--Job listings White container-->
             <div class="flexJob"><!--Div for job details--> 
                 <div class="jobImage"><!--Div for image--> 
                     <img src="./images/photosnap.svg">
@@ -30,7 +31,7 @@
                         <span id="featopt" class="info feat">FEATURED</span>
                     </div>
                     <div class="compTitles"><!--Job Title--> 
-                        <span class="title"><button id="jobClick">Senior Frontend Developer</button></span>
+                        <span class="title"><button id="jobClick" value="1">Senior Frontend Developer</button></span>
                     </div>
                     <div class="posDetails"><!--Gray List Job Status--> 
                         <ul class="list">
@@ -50,6 +51,44 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <!--This is pop up for display-->
+        <div class="popupContainer" style="display: none;">
+            <div class="popupInner"><!--Job listings White container-->
+                <div class="popJob"><!--Div for image--> 
+                    <img src="./images/photosnap.svg">
+                </div>
+
+                <div class="pop"><!--Div for job description--> 
+                    <div class="compTitles"><!--Comapny New and Featured--> 
+                        <span class="compName">Photosnap</span>
+                        <span id="newopt" class="info new">NEW!</span>
+                        <span id="featopt" class="info feat">FEATURED</span>
+                    </div>
+                    <div class="compTitles"><!--Job Title--> 
+                        <span class="title">Senior Frontend Developer</span>
+                    </div>
+                    <div class="posDetails"><!--Gray List Job Status--> 
+                        <ul class="listpop">
+                            <li class="lip">1d ago</li>
+                            <li class="lip">Full Time</li>
+                            <li class="lip"> USA only</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flexToolspop"><!--Div for tools--> 
+                    <input type="button" class="btnSet btn" value="Frontend">
+                    <input type="button" class="btnSet btn" value="Senior">
+                    <input type="button" class="btnSet btn" value="HTML">
+                    <input type="button" class="btnSet btn" value="CSS">
+                    <input type="button" class="btnSet btn" value="Javascript">
+                </div>
+
+                <button class="close">Close</button>
+            </div>
+        </div>
+        <!--This is pop up for display-->
+    </div><!--This is end of flexBody-->
 </body>
 </html>
