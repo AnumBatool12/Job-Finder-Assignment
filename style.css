@@ -130,11 +130,21 @@ div .feat{
 /*Settings for Job Heading*/
 div .title{
     color: black;
-    font-size: 19px;
-    font-weight: 700;
 }
 
-div .title:hover{
+div #jobClick{
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    font-weight: 700;
+    border: none;
+    font-size: 16px;
+    text-align: left;
+
+}
+
+
+div #jobClick:hover{
     color: hsl(180, 29%, 50%);
 }
 

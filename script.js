@@ -1,90 +1,97 @@
 $(document).ready(function(){
-        $.getJSON("data.json", function(data){//getting data
-            console.log(data); 
-            
-            let flexBody=$("flexBody");//so that we can append to it
+    $.getJSON("data.json", function(data){//getting data
+        console.log(data); 
+        $.fn.DisplayData(data)
 
-            //appending white job container 
+        
+
+    })//end tag of get data.json
+    .fail(function(){console.log("An error has occurred in get function.");});
+
+    $.fn.DisplayData=function(data){//This function displays data on main screen
+        let flexBody=$("flexBody");//so that we can append to it
+
+        //appending white job container 
             data.forEach(element => {
-                console.log(element.id)
-                
-                //creating a new job white container
-                var $job=$(' <div class="job"></div>')
 
-                //creating a new flexJob
-                var $flexJob=$('<div class="flexJob"></div>')
+            //creating a new job white container
+            var $job=$(' <div class="job"></div>')
 
-                //creating div to store image
-                var $divImage=$('<div class="jobImage"></div>')
-                var $img=$(' <img src="' + element.logo + '">')
-                $divImage.append($img)
-                //creating div to store image
+            //creating a new flexJob
+            var $flexJob=$('<div class="flexJob"></div>')
 
-                //creating flexTitle
-                var $flexTitle=$('<div class="flexTitle"></div>')
+            //creating div to store image
+            var $divImage=$('<div class="jobImage"></div>')
+            var $img=$(' <img src="' + element.logo + '">')
+            $divImage.append($img)
+            //creating div to store image
 
-                //creating company titles
-                var $compTitles=$('<div class="compTitles"></div>')
-                var $compName=$('<span class="compName">' + element.company + '</span>')
-                $compTitles.append($compName)
+            //creating flexTitle
+            var $flexTitle=$('<div class="flexTitle"></div>')
 
-                if (element.new){//add new only
-                    var $newopt=$('<span id="newopt" class="info new">NEW!</span>') 
-                    $compTitles.append($newopt)
-                }
-                
-                if (element.featured){//add new and feature tags 
-                    var $featopt=$('<span id="featopt" class="info feat">FEATURED</span>')
-                    $compTitles.append($featopt)
-                }
-                
-                //creating company titles
+            //creating company titles
+            var $compTitles=$('<div class="compTitles"></div>')
+            var $compName=$('<span class="compName">' + element.company + '</span>')
+            $compTitles.append($compName)
 
-                //creating job titles
-                var $compTitles2=$('<div class="compTitles"></div>')
-                var $title=$('<span class="title">' + element.position + '</span>')
-                $compTitles2.append($title)
-                //creating job titles
+            if (element.new){//add new only
+                var $newopt=$('<span id="newopt" class="info new">NEW!</span>') 
+                $compTitles.append($newopt)
+            }
 
-                //creating position details
-                var $posDetails=$('<div class="posDetails"></div>')
-                var $list=$('<ul class="list"></ul>')
-                var $first=$('<li class="first">' + element.postedAt + '</li>')
-                var $second=$('<li>' + element.contract +'</li>')
-                var $third=$('<li>' + element.location +'</li>')
+            if (element.featured){//add new and feature tags 
+                var $featopt=$('<span id="featopt" class="info feat">FEATURED</span>')
+                $compTitles.append($featopt)
+            }
 
-                $list.append($first, $second, $third)
-                $posDetails.append($list)
-                //creating position details
-                $flexTitle.append($compTitles, $compTitles2, $posDetails)
-                //creating flexTitle
+            //creating company titles
 
-                //creating flexTools
-                var $flexTools=$('<div class="flexTools"></div>')
-                var $role=$('<input type="button" class="btnSettings btn" value="' + element.role + '">')
-                var $level=$('<input type="button" class="btnSettings btn" value="' + element.level + '">')
+            //creating job titles
+            var $compTitles2=$('<div class="compTitles"></div>')
+            var $title=$('<span class="title"><button id="jobClick">' + element.position + '</button></span>')
+            $compTitles2.append($title)
+            //creating job titles
 
-                $flexTools.append($role, $level)
+            //creating position details
+            var $posDetails=$('<div class="posDetails"></div>')
+            var $list=$('<ul class="list"></ul>')
+            var $first=$('<li class="first">' + element.postedAt + '</li>')
+            var $second=$('<li>' + element.contract +'</li>')
+            var $third=$('<li>' + element.location +'</li>')
 
-                element.languages.forEach(lang =>{
-                    var $l=$('<input type="button" class="btnSettings btn" value="' + lang + '">')
+            $list.append($first, $second, $third)
+            $posDetails.append($list)
+            //creating position details
+            $flexTitle.append($compTitles, $compTitles2, $posDetails)
+            //creating flexTitle
 
-                    $flexTools.append($l)
-                })
+            //creating flexTools
+            var $flexTools=$('<div class="flexTools"></div>')
+            var $role=$('<input type="button" class="btnSettings btn" value="' + element.role + '">')
+            var $level=$('<input type="button" class="btnSettings btn" value="' + element.level + '">')
 
-                element.tools.forEach(tool =>{
-                    var $t=$('<input type="button" class="btnSettings btn" value="' + tool + '">')
+            $flexTools.append($role, $level)
 
-                    $flexTools.append($t)
-                })
-                //creating flexTools
+            element.languages.forEach(lang =>{
+                var $l=$('<input type="button" class="btnSettings btn" value="' + lang + '">')
 
-                //appending all that data
-                $flexJob.append($divImage, $flexTitle, $flexTools)
-                $job.append($flexJob)
-                $('.flexBody').append($job)
-            });
+                $flexTools.append($l)
+            })
 
-        })
-        .fail(function(){console.log("An error has occurred.");});
-});
+            element.tools.forEach(tool =>{
+                var $t=$('<input type="button" class="btnSettings btn" value="' + tool + '">')
+
+                $flexTools.append($t)
+            })
+            //creating flexTools
+
+            //appending all that data
+            $flexJob.append($divImage, $flexTitle, $flexTools)
+            $job.append($flexJob)
+            $('.flexBody').append($job)
+            
+        });//end tag of data loop
+    };
+
+
+});//end tag of ready function
