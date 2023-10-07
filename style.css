@@ -34,6 +34,7 @@ header{
 /*Settings for main div*/
 
 /*Settings for filter div*/
+
 /*Settings for filter div*/
 
 /*Settings for Delete button*/
@@ -409,13 +410,13 @@ div .posDetails{
 .addFormInner{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     background-color: white;
     border-radius: 5px;
-    margin-top: 5%;
+    margin-top: 3%;
     width: 40%;
     height: 500px;
     overflow-y: scroll;
+    padding: 5px;
 }
 
 .titleform{
@@ -495,7 +496,6 @@ input[type=radio] {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    
 }
 /*Apdd Pop Buttons*/
 

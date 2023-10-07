@@ -33,15 +33,24 @@ $(document).ready(function(){
         //Add Form Functionality
         $(document).on("click", "#addBtn", function(){
             $(".addpopupContainer").fadeIn("speed")
+            var element={
+                "id":0,
+                "company": "",
+                "logo": "",
+                "new": true,
+                "featured": true,
+                "position": "",
+                "role": "",
+                "level": "",
+                "postedAt": "0d ago",
+                "contract": "",
+                "location": "",
+                "languages": [],
+                "tools": []
+            }
 
-            //filling form where necessary
-            $fn.FillForm();
-
-            $.fn.AddData(data);
+            $.fn.AddData(data, element);
         });
-
-        
-        
         //Add Form Functionality
 
     })//end tag of get data.json
@@ -53,92 +62,101 @@ $(document).ready(function(){
         //appending white job container 
             data.forEach(element => {
 
-            //creating a new job white container
-            var $job=$(' <div class="job" data-value="'+ element.id+ '"></div>')
-
-            //creating hide button
-            var $hide=$('<div class="hide" data-value="'+ element.id+ '"></div>')
-            var $del=$('<button class="delprop">X</button>')
-
-            $hide.append($del)
-            //creating hide button
-
-            //creating a new flexJob
-            var $flexJob=$('<div class="flexJob"></div>')
-
-            //creating div to store image
-            var $divImage=$('<div class="jobImage"></div>')
-            var $img=$(' <img src="' + element.logo + '">')
-            $divImage.append($img)
-            //creating div to store image
-
-            //creating flexTitle
-            var $flexTitle=$('<div class="flexTitle"></div>')
-
-            //creating company titles
-            var $compTitles=$('<div class="compTitles"></div>')
-            var $compName=$('<span class="compName">' + element.company + '</span>')
-            $compTitles.append($compName)
-
-            if (element.new){//add new only
-                var $newopt=$('<span id="newopt" class="info new">NEW!</span>') 
-                $compTitles.append($newopt)
-            }
-
-            if (element.featured){//add new and feature tags 
-                var $featopt=$('<span id="featopt" class="info feat">FEATURED</span>')
-                $compTitles.append($featopt)
-            }
-
-            //creating company titles
-
-            //creating job titles
-            var $compTitles2=$('<div class="compTitles"></div>')
-            var $title=$('<span class="title"><button id="jobClick" value="' + element.id + '">' + element.position + '</button></span>')
-            $compTitles2.append($title)
-            //creating job titles
-
-            //creating position details
-            var $posDetails=$('<div class="posDetails"></div>')
-            var $list=$('<ul class="list"></ul>')
-            var $first=$('<li class="first">' + element.postedAt + '</li>')
-            var $second=$('<li>' + element.contract +'</li>')
-            var $third=$('<li>' + element.location +'</li>')
-
-            $list.append($first, $second, $third)
-            $posDetails.append($list)
-            //creating position details
-            $flexTitle.append($compTitles, $compTitles2, $posDetails)
-            //creating flexTitle
-
-            //creating flexTools
-            var $flexTools=$('<div class="flexTools"></div>')
-            var $role=$('<input type="button" class="btnSettings btn" value="' + element.role + '">')
-            var $level=$('<input type="button" class="btnSettings btn" value="' + element.level + '">')
-
-            $flexTools.append($role, $level)
-
-            element.languages.forEach(lang =>{
-                var $l=$('<input type="button" class="btnSettings btn" value="' + lang + '">')
-
-                $flexTools.append($l)
-            })
-
-            element.tools.forEach(tool =>{
-                var $t=$('<input type="button" class="btnSettings btn" value="' + tool + '">')
-
-                $flexTools.append($t)
-            })
-            //creating flexTools
-
-
-            //appending all that data
-            $flexJob.append($divImage, $flexTitle, $flexTools)
-            $job.append($hide, $flexJob)
-            $('.flexBody').append($job)
+            $.fn.AddElement(element, 'append')
             
         });//end tag of data loop
     };
+
+    $.fn.AddElement=function(element, app){
+        //creating a new job white container
+        var $job=$(' <div class="job" data-value="'+ element.id+ '"></div>')
+
+        //creating hide button
+        var $hide=$('<div class="hide" data-value="'+ element.id+ '"></div>')
+        var $del=$('<button class="delprop">X</button>')
+
+        $hide.append($del)
+        //creating hide button
+
+        //creating a new flexJob
+        var $flexJob=$('<div class="flexJob"></div>')
+
+        //creating div to store image
+        var $divImage=$('<div class="jobImage"></div>')
+        var $img=$(' <img src="' + element.logo + '">')
+        $divImage.append($img)
+        //creating div to store image
+
+        //creating flexTitle
+        var $flexTitle=$('<div class="flexTitle"></div>')
+
+        //creating company titles
+        var $compTitles=$('<div class="compTitles"></div>')
+        var $compName=$('<span class="compName">' + element.company + '</span>')
+        $compTitles.append($compName)
+
+        if (element.new){//add new only
+            var $newopt=$('<span id="newopt" class="info new">NEW!</span>') 
+            $compTitles.append($newopt)
+        }
+
+        if (element.featured){//add new and feature tags 
+            var $featopt=$('<span id="featopt" class="info feat">FEATURED</span>')
+            $compTitles.append($featopt)
+        }
+
+        //creating company titles
+
+        //creating job titles
+        var $compTitles2=$('<div class="compTitles"></div>')
+        var $title=$('<span class="title"><button id="jobClick" value="' + element.id + '">' + element.position + '</button></span>')
+        $compTitles2.append($title)
+        //creating job titles
+
+        //creating position details
+        var $posDetails=$('<div class="posDetails"></div>')
+        var $list=$('<ul class="list"></ul>')
+        var $first=$('<li class="first">' + element.postedAt + '</li>')
+        var $second=$('<li>' + element.contract +'</li>')
+        var $third=$('<li>' + element.location +'</li>')
+
+        $list.append($first, $second, $third)
+        $posDetails.append($list)
+        //creating position details
+        $flexTitle.append($compTitles, $compTitles2, $posDetails)
+        //creating flexTitle
+
+        //creating flexTools
+        var $flexTools=$('<div class="flexTools"></div>')
+        var $role=$('<input type="button" class="btnSettings btn" value="' + element.role + '">')
+        var $level=$('<input type="button" class="btnSettings btn" value="' + element.level + '">')
+
+        $flexTools.append($role, $level)
+
+        element.languages.forEach(lang =>{
+            var $l=$('<input type="button" class="btnSettings btn" value="' + lang + '">')
+
+            $flexTools.append($l)
+        })
+
+        element.tools.forEach(tool =>{
+            var $t=$('<input type="button" class="btnSettings btn" value="' + tool + '">')
+
+            $flexTools.append($t)
+        })
+        //creating flexTools
+
+        //appending all that data
+        $flexJob.append($divImage, $flexTitle, $flexTools)
+        $job.append($hide, $flexJob)
+        if (app=='append'){
+            $('.flexBody').append($job)
+        }
+        else if (app=='prepend'){
+            $('.flexBody').prepend($job)
+        }
+        
+    }
 
     $.fn.ShowPop=function(element){//This function displays popup
         let $pc=$('<div class="popupContainer" style="display: none;"></div>')
@@ -227,24 +245,95 @@ $(document).ready(function(){
         $(".hide").not("[data-value='" + id + "']").css("display", "none");
     };
 
-    $.fn.FillForm=function(){
+    $.fn.AddData=function(data, element){
+
+        $(document).on("click", "#closeForm", function(){
+            $(".addpopupContainer").fadeOut("slow")
+        });
+
+        $(document).on("click", "#saveForm", function(){
+            $.fn.SaveData(data, element)
+
+        });
+    };
+
+    $.fn.SaveData=function(data, element){
+        var allFilled=true;
+
+        //added company
+        var company=$('#companyOpt option:selected').val();
+        if (company=="None"){
+            allFilled=false;
+        }
+        else{
+            element.company=company;
+            $.fn.getLogo(element, company)
+        }
+
+        //getting position
+        var pos=$("#pos").val()
+        if (pos==''){allFilled=false;}
+        else {element.position=pos}
+
+        //getting location
+        var loc=$("#loc").val()
+        if (loc==''){allFilled=false;}
+        else {element.location=loc}
+
+        //getting role
+        var role=$('input[name="role"]:checked').val();
+        if (!role){allFilled=false}
+        else {element.role=role;}
+
+        //getting level
+        var level=$('input[name="level"]:checked').val();
+        if (!level){allFilled=false}
+        else {element.level=level;}
+
+        //getting Timeing
+        var time=$('input[name="time"]:checked').val();
+        if (!time){allFilled=false}
+        else {element.contract=time;}
+
+        //getting lang
+        element.languages = $('input[name="lang"]:checked').map(function(_, el) {
+            return $(el).val();
+        }).get();
+
+        //getting tools
+        element.tools = $('input[name="tool"]:checked').map(function(_, el) {
+            return $(el).val();
+        }).get();
         
-    };
+        
+        if (allFilled){
+            data.unshift(element)
+            data.forEach(element=>{
+                element.id=element.id+1
+            })
 
-    $.fn.AddData=function(data){
-        $("#closeForm").click(function(){
+            $.fn.AddElement(element, 'prepend')
+
             $(".addpopupContainer").fadeOut("slow")
-        });
-
-        $("#saveForm").click(function(){
-
-
-            $.fn.SaveData(data)
-            $(".addpopupContainer").fadeOut("slow")
-        });
+        }
+        else{
+            alert("Fill all fields with red star!")
+        }
     };
 
-    $.fn.SaveData=function(data){
-
-    };
+    $.fn.getLogo=function(element, company){
+        if (company=="Photosnap") {element.logo="./images/photosnap.svg"}
+        else if (company=="Manage") {element.logo="./images/manage.svg"}
+        else if (company=="Account") {element.logo="./images/account.svg"}
+        else if (company=="MyHome") {element.logo="./images/myhome.svg"}
+        else if (company=="Loop Studios") {element.logo="./images/loop-studios.svg"}
+        else if (company=="FaceIt") {element.logo="./images/faceit.svg"}
+        else if (company=="Shortly") {element.logo="./images/shortly.svg"}
+        else if (company=="Insure") {element.logo="./images/insure.svg"}
+        else if (company=="Eyecam Co.") {element.logo="./images/eyecam-co.svg"}
+        else if (company=="The Air Filter Company") {element.logo="./images/the-air-filter-company.svg"}
+        else{
+            element.logo="./images/the-air-filter-company.svg"
+        }
+    }
 });//end tag of ready function

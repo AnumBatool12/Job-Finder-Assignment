@@ -16,7 +16,9 @@
     <header><!--Header image and background--> </header> <!--Check header settings in style-->
 
     <div class="flexBody"><!--Rest of the body (position relative)-->
-        <div class="filter"><!--This is for the filter section(position absolute)--></div>
+        <div class="filter"><!--This is for the filter section(position absolute)-->
+            
+        </div>
 
         <div class="job" data-value="1" style="display: none;"><!--Job listings White container-->
             <div class="hide" data-value="1">
@@ -109,8 +111,8 @@
                     <!--.company use dropdown and load .logo automatically-->
                     <div>
                         <p>Choose company<span style="color: red;">*</span></p>
-                        <select name="company" class="infowidth">
-                            <option value="None">Select Company</option>
+                        <select name="company" class="infowidth" id="companyOpt">
+                            <option value="None" selected>Select Company</option>
                             <option value="Photosnap">Photosnap</option>
                             <option value="Manage">Manage</option>
                             <option value="Account">Account</option>
@@ -127,7 +129,7 @@
                     <!--.position-->
                     <div>
                         <p>Enter Position<span style="color: red;">*</span></p>
-                        <input type="text" placeholder="Enter Postion You're Applying For" name="position"  class="infowidth">
+                        <input type="text" placeholder="Enter Postion You're Applying For" name="position"  class="infowidth" id="pos">
                     </div>
     
                     <!--.role radio button-->
@@ -141,22 +143,22 @@
                     <!--.level radio button-->
                     <div class="infowidth radioFlex">
                         <p>Select Level<span style="color: red;">*</span></p>
-                        <input type="radio" name="role" value="Junior"> Junior <br>
-                        <input type="radio" name="role" value="Midweight"> Midweight <br>
-                        <input type="radio" name="role" value="Senior"> Senior <br>
+                        <input type="radio" name="level" value="Junior"> Junior <br>
+                        <input type="radio" name="level" value="Midweight"> Midweight <br>
+                        <input type="radio" name="level" value="Senior"> Senior <br>
                     </div>
                     
                     <!--.contract radio button-->
                     <div class="infowidth radioFlex">
                         <p>Select Contract Timing<span style="color: red;">*</span></p>
-                        <input type="radio" name="role" value="Full Time"> Full Time <br>
-                        <input type="radio" name="role" value="Part Time"> Part Time <br>
+                        <input type="radio" name="time" value="Full Time"> Full Time <br>
+                        <input type="radio" name="time" value="Part Time"> Part Time <br>
                     </div>
     
                     <!--.location text field-->
                     <div>
                         <p>Enter Location<span style="color: red;">*</span></p>
-                        <input type="text" placeholder="Enter Places you can work from" name="location"  class="infowidth">
+                        <input type="text" placeholder="Enter Places you can work from" name="location"  class="infowidth" id="loc">
                     </div>
     
                     <!--.languages checkbox-->
@@ -178,11 +180,11 @@
                         <input type="checkbox" name="tool" value="Django">Django  <br>
                         <input type="checkbox" name="tool" value="RoR">RoR  <br>
                     </div>
-                    <div id="popBtns">
-                        <button class="savepop" id="saveForm">Save and Close</button>
-                        <button class="closepop" id="closeForm">Close without Saving</button>
-                    </div>
                 </form>
+                <div id="popBtns">
+                    <button class="savepop" id="saveForm">Save and Close</button>
+                    <button class="closepop" id="closeForm">Close without Saving</button>
+                </div>
             </div>
         </div>
         <!--End ofAdd Form-->
