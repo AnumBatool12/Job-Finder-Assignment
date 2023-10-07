@@ -7,8 +7,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <script src="script.js"></script> 
-    <!---->
+    <script src="script.js"></script>
+    <!-- -->
     <title>Frontend Mentor | Job Listings</title>
     <title>Document</title>
 </head>
@@ -18,7 +18,7 @@
     <div class="flexBody"><!--Rest of the body (position relative)-->
         <div class="filter"><!--This is for the filter section(position absolute)--></div>
 
-        <div class="job" style="display: none;" data-value="1"><!--Job listings White container-->
+        <div class="job" data-value="1" style="display: none;"><!--Job listings White container-->
             <div class="hide" data-value="1">
                 <button class="delprop">X</button>
             </div>
@@ -91,8 +91,101 @@
 
                 <button class="close">Close</button>
             </div>
+        </div><!--This is end of pop up for display-->
+
+        <div id="addJobBtn"><!--Class for add button-->
+            <button id="addBtn"> + </button>
+        </div><!--Class for add button-->
+
+        <!--Add Form-->
+        <div class="addpopupContainer" style="display: none;">
+            <div class="addFormInner"><!--White container of form-->
+                <form id="addForm">
+                    <div class="titleform tborder">Job Listing Input Form</div>
+                    <!--id calculated automatically
+                    new and featured will be set to true
+                    postedAt value is default 0d ago-->
+    
+                    <!--.company use dropdown and load .logo automatically-->
+                    <div>
+                        <p>Choose company<span style="color: red;">*</span></p>
+                        <select name="company" class="infowidth">
+                            <option value="None">Select Company</option>
+                            <option value="Photosnap">Photosnap</option>
+                            <option value="Manage">Manage</option>
+                            <option value="Account">Account</option>
+                            <option value="MyHome">MyHome</option>
+                            <option value="Loop Studios">Loop Studios</option>
+                            <option value="FaceIt">FaceIt</option>
+                            <option value="Shortly">Shortly</option>
+                            <option value="Insure">Insure</option>
+                            <option value="Eyecam Co.">Eyecam Co</option>
+                            <option value="The Air Filter Company">The Air Filter Company</option>
+                        </select>
+                    </div>
+    
+                    <!--.position-->
+                    <div>
+                        <p>Enter Position<span style="color: red;">*</span></p>
+                        <input type="text" placeholder="Enter Postion You're Applying For" name="position"  class="infowidth">
+                    </div>
+    
+                    <!--.role radio button-->
+                    <div class="infowidth radioFlex">
+                        <p>Select Role<span style="color: red;">*</span></p>
+                        <input type="radio" name="role" value="Frontend"> Frontend <br>
+                        <input type="radio" name="role" value="Backend"> Backend <br>
+                        <input type="radio" name="role" value="Fullstack"> Fullstack <br>
+                    </div>
+    
+                    <!--.level radio button-->
+                    <div class="infowidth radioFlex">
+                        <p>Select Level<span style="color: red;">*</span></p>
+                        <input type="radio" name="role" value="Junior"> Junior <br>
+                        <input type="radio" name="role" value="Midweight"> Midweight <br>
+                        <input type="radio" name="role" value="Senior"> Senior <br>
+                    </div>
+                    
+                    <!--.contract radio button-->
+                    <div class="infowidth radioFlex">
+                        <p>Select Contract Timing<span style="color: red;">*</span></p>
+                        <input type="radio" name="role" value="Full Time"> Full Time <br>
+                        <input type="radio" name="role" value="Part Time"> Part Time <br>
+                    </div>
+    
+                    <!--.location text field-->
+                    <div>
+                        <p>Enter Location<span style="color: red;">*</span></p>
+                        <input type="text" placeholder="Enter Places you can work from" name="location"  class="infowidth">
+                    </div>
+    
+                    <!--.languages checkbox-->
+                    <div class="infowidth radioFlex">
+                        <p>Select Languages</p>
+                        <input type="checkbox" name="lang" value="Python">Python  <br>
+                        <input type="checkbox" name="lang" value="Ruby">Ruby  <br>
+                        <input type="checkbox" name="lang" value="JavaScript">JavaScript  <br>
+                        <input type="checkbox" name="lang" value="HTML">HTML  <br>
+                        <input type="checkbox" name="lang" value="CSS">CSS  <br>
+                    </div>
+    
+                    <!--.tools checkbox)-->
+                    <div class="infowidth radioFlex">
+                        <p>Select Tools</p>
+                        <input type="checkbox" name="tool" value="React">React  <br>
+                        <input type="checkbox" name="tool" value="Sass">Sass  <br>
+                        <input type="checkbox" name="tool" value="Vue">Vue  <br>
+                        <input type="checkbox" name="tool" value="Django">Django  <br>
+                        <input type="checkbox" name="tool" value="RoR">RoR  <br>
+                    </div>
+                    <div id="popBtns">
+                        <button class="savepop" id="saveForm">Save and Close</button>
+                        <button class="closepop" id="closeForm">Close without Saving</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <!--This is pop up for display-->
-    </div><!--This is end of flexBody-->
+        <!--End ofAdd Form-->
+    </div><!--This is end of flexBody -->
 </body>
 </html>

@@ -158,6 +158,7 @@ div .feat{
 div .title{
     color: black;
     font-weight: 700;
+    font-family: 'League Spartan', serif;
 }
 
 div #jobClick{
@@ -361,3 +362,156 @@ div .posDetails{
     border: 1px solid rgb(145, 2, 2);
 }
 /*Settings for pop Container */
+
+/*Setting for Add Form*/
+/*Setting for add button*/
+
+#addJobBtn{
+    position: fixed;
+    right: 3%;
+    bottom: 3%;
+}
+
+#addBtn{
+    font-family: 'League Spartan', serif;
+    font-size: xx-large;
+    font-weight: 700;
+    color: white;
+    background-color: hsl(180, 29%, 50%);
+    border: none;
+    border-radius: 30px;
+    width: 40px;
+    height: 35px;
+    padding: 5px;
+}
+
+#addBtn:hover{
+    color: hsl(180, 29%, 50%);
+    background-color: white;
+    border: 1px solid hsl(180, 29%, 50%);
+}
+/*Setting for add button*/
+
+/*Add pop up*/
+.addpopupContainer{
+    position: fixed;
+    display: flex;
+    top: 0;
+    z-index: 1;/*Stacking Property*/
+    background-color: hsla(180, 25%, 69%, 0.39);
+    width:100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: 'League Spartan', serif;
+}
+
+.addFormInner{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 5%;
+    width: 40%;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.titleform{
+    color: black;
+    font-weight: 700;
+    font-family: 'League Spartan', serif;
+    margin-top: 20px;
+}
+
+.tborder{
+    border-bottom: 1px;
+    border-bottom: 1px solid hsl(180, 29%, 50%);
+    margin-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+#addForm{
+    font-family: 'League Spartan', serif;
+    padding-left: 20px;
+}
+
+.infowidth{
+    width: 250px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.radioFlex{
+    width: 250px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+input[type=radio] {
+    padding-bottom: 2px;
+}
+
+/*Add pop up*/
+
+/*Add Pop Buttons*/
+.closepop{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: rgb(145, 2, 2);
+    color: white;
+    border: none;
+    padding: 2%;
+    font-family: 'League Spartan', serif;
+    border-radius: 3px;
+}
+
+.closepop:hover{
+    color: rgb(145, 2, 2);
+    background-color: white;
+    border: 1px solid rgb(145, 2, 2);
+}
+
+.savepop{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: hsl(180, 29%, 50%);
+    color: white;
+    border: none;
+    padding: 2%;
+    font-family: 'League Spartan', serif;
+    border-radius: 3px;
+}
+
+.savepop:hover{
+    color: hsl(180, 29%, 50%);
+    background-color: white;
+    border: 1px solid hsl(180, 29%, 50%);
+}
+
+#popBtns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+/*Apdd Pop Buttons*/
+
+/*Add pop up Responsiveness Setting*/
+@media screen and (max-width: 500px){
+    .addFormInner{
+        width:80%;
+    }
+
+    .infowidth{
+        width: 75%;
+    }
+
+    .radioFlex{
+        width: 75%;
+    }
+}
+/*Add pop up Responsiveness Setting*/
+/*Setting for Add Form*/

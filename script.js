@@ -30,6 +30,19 @@ $(document).ready(function(){
         });
         //Functionality to show delete button on hover
 
+        //Add Form Functionality
+        $(document).on("click", "#addBtn", function(){
+            $(".addpopupContainer").fadeIn("speed")
+
+            //filling form where necessary
+            $fn.FillForm();
+
+            $.fn.AddData(data);
+        });
+
+        
+        
+        //Add Form Functionality
 
     })//end tag of get data.json
     .fail(function(){console.log("An error has occurred in get function.");});
@@ -212,7 +225,26 @@ $(document).ready(function(){
     $.fn.DelButton=function(id){//This function displays del button
         $(".hide[data-value='" + id + "']").css("display", "inline")
         $(".hide").not("[data-value='" + id + "']").css("display", "none");
-    }
+    };
+
+    $.fn.FillForm=function(){
+        
+    };
+
+    $.fn.AddData=function(data){
+        $("#closeForm").click(function(){
+            $(".addpopupContainer").fadeOut("slow")
+        });
+
+        $("#saveForm").click(function(){
 
 
+            $.fn.SaveData(data)
+            $(".addpopupContainer").fadeOut("slow")
+        });
+    };
+
+    $.fn.SaveData=function(data){
+
+    };
 });//end tag of ready function
