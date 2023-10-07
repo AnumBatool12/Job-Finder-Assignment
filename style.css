@@ -36,6 +36,30 @@ header{
 /*Settings for filter div*/
 /*Settings for filter div*/
 
+/*Settings for Delete button*/
+
+.delprop{
+    font-family: 'League Spartan', serif;
+    font-weight: 700;
+    padding: 6px;
+    border-radius: 7px;
+    float: right;
+    background-color: white;
+    color:  rgb(145, 2, 2);
+    border: 1px solid rgb(145, 2, 2);
+}
+
+.delprop:hover{
+    background-color: rgb(145, 2, 2);
+    color: white;
+}
+
+.hide{
+    display: none;
+    align-items: flex-start;
+}
+/*Settings for delete button*/
+
 /*Setting for job container div*/
 .job{
     width:85%;
@@ -43,13 +67,16 @@ header{
     background-color: white;
     border-radius: 5px;
     box-shadow: 0px 5px 15px 0px hsl(180, 30%, 80%);
+    
 }
 
 /*Setting for hover*/
 .job:hover{
     box-shadow: 5px 5px 10px 0px hsl(180, 8%, 52%);
     border-left: 5px solid hsl(180, 29%, 50%);
+    display: block;
 }
+
 /*Setting for hover*/
 /*Setting for job-container div*/
 
@@ -130,6 +157,7 @@ div .feat{
 /*Settings for Job Heading*/
 div .title{
     color: black;
+    font-weight: 700;
 }
 
 div #jobClick{
@@ -140,9 +168,7 @@ div #jobClick{
     border: none;
     font-size: 16px;
     text-align: left;
-
 }
-
 
 div #jobClick:hover{
     color: hsl(180, 29%, 50%);
@@ -283,6 +309,13 @@ div .posDetails{
     display: flex;
     min-height: 88px;
     width: 17em;
+}
+
+.compTitlespop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .listpop{

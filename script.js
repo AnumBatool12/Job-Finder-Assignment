@@ -3,13 +3,34 @@ $(document).ready(function(){
         console.log(data); 
         $.fn.DisplayData(data)
 
+        //pop up functionality
         $(document).on ("click", "#jobClick", function () {
             var id=$(this).attr("value")
             let info=data[id-1]
             $.fn.ShowPop(info)
         });
+        //pop up functionality
 
-        
+        //Functionality to show delete button on hover
+        $(".job").on({
+            mouseenter: function(){
+                var id=$(this).attr("data-value")
+                $.fn.DelButton(id)
+
+                $(this).on("click", ".delprop", function(){
+                    data=data.filter(element=> element.id!=id)
+                    console.log(data)
+                    $(this).closest('.job').remove();
+                });
+                
+            },
+            mouseleave: function(){
+                $(".hide").css("display", "none")
+            }
+        });
+        //Functionality to show delete button on hover
+
+
     })//end tag of get data.json
     .fail(function(){console.log("An error has occurred in get function.");});
 
@@ -20,7 +41,14 @@ $(document).ready(function(){
             data.forEach(element => {
 
             //creating a new job white container
-            var $job=$(' <div class="job"></div>')
+            var $job=$(' <div class="job" data-value="'+ element.id+ '"></div>')
+
+            //creating hide button
+            var $hide=$('<div class="hide" data-value="'+ element.id+ '"></div>')
+            var $del=$('<button class="delprop">X</button>')
+
+            $hide.append($del)
+            //creating hide button
 
             //creating a new flexJob
             var $flexJob=$('<div class="flexJob"></div>')
@@ -93,13 +121,13 @@ $(document).ready(function(){
 
             //appending all that data
             $flexJob.append($divImage, $flexTitle, $flexTools)
-            $job.append($flexJob)
+            $job.append($hide, $flexJob)
             $('.flexBody').append($job)
             
         });//end tag of data loop
     };
 
-    $.fn.ShowPop=function(element){
+    $.fn.ShowPop=function(element){//This function displays popup
         let $pc=$('<div class="popupContainer" style="display: none;"></div>')
         var $inner=$('<div class="popupInner"></div>')
 
@@ -113,7 +141,7 @@ $(document).ready(function(){
         var $flexTitle=$('<div class="pop"></div>')
 
         //creating company titles
-        var $compTitles=$('<div class="compTitles"></div>')
+        var $compTitles=$('<div class="compTitlespop"></div>')
         var $compName=$('<span class="compName">' + element.company + '</span>')
         $compTitles.append($compName)
 
@@ -131,7 +159,7 @@ $(document).ready(function(){
 
         //creating job titles
         var $compTitles2=$('<div class="compTitles"></div>')
-        var $title=$('<span class="title"><button id="jobClick" value="' + element.id + '">' + element.position + '</button></span>')
+        var $title=$('<span class="title">' + element.position + '</span>')
         $compTitles2.append($title)
         //creating job titles
 
@@ -150,19 +178,19 @@ $(document).ready(function(){
 
         //creating flexTools
         var $flexTools=$('<div class="flexToolspop"></div>')
-        var $role=$('<input type="button" class="btnSettings btn" value="' + element.role + '">')
-        var $level=$('<input type="button" class="btnSettings btn" value="' + element.level + '">')
+        var $role=$('<input type="button" class="btnSet btn" value="' + element.role + '">')
+        var $level=$('<input type="button" class="btnSet btn" value="' + element.level + '">')
 
         $flexTools.append($role, $level)
 
         element.languages.forEach(lang =>{
-            var $l=$('<input type="button" class="btnSettings btn" value="' + lang + '">')
+            var $l=$('<input type="button" class="btnSet btn" value="' + lang + '">')
 
             $flexTools.append($l)
         })
 
         element.tools.forEach(tool =>{
-            var $t=$('<input type="button" class="btnSettings btn" value="' + tool + '">')
+            var $t=$('<input type="button" class="btnSet btn" value="' + tool + '">')
 
             $flexTools.append($t)
         })
@@ -180,5 +208,11 @@ $(document).ready(function(){
             $(".popupContainer").fadeOut("slow")
         });
     };
+
+    $.fn.DelButton=function(id){//This function displays del button
+        $(".hide[data-value='" + id + "']").css("display", "inline")
+        $(".hide").not("[data-value='" + id + "']").css("display", "none");
+    }
+
 
 });//end tag of ready function

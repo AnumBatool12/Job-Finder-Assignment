@@ -7,8 +7,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
-    <!-- -->
+    <script src="script.js"></script> 
+    <!---->
     <title>Frontend Mentor | Job Listings</title>
     <title>Document</title>
 </head>
@@ -18,7 +18,11 @@
     <div class="flexBody"><!--Rest of the body (position relative)-->
         <div class="filter"><!--This is for the filter section(position absolute)--></div>
 
-        <div class="job" style="display: none;"><!--Job listings White container-->
+        <div class="job" style="display: none;" data-value="1"><!--Job listings White container-->
+            <div class="hide" data-value="1">
+                <button class="delprop">X</button>
+            </div>
+
             <div class="flexJob"><!--Div for job details--> 
                 <div class="jobImage"><!--Div for image--> 
                     <img src="./images/photosnap.svg">
@@ -60,7 +64,7 @@
                 </div>
 
                 <div class="pop"><!--Div for job description--> 
-                    <div class="compTitles"><!--Comapny New and Featured--> 
+                    <div class="compTitlespop"><!--Comapny New and Featured--> 
                         <span class="compName">Photosnap</span>
                         <span id="newopt" class="info new">NEW!</span>
                         <span id="featopt" class="info feat">FEATURED</span>
