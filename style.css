@@ -33,10 +33,6 @@ header{
 }
 /*Settings for main div*/
 
-/*Settings for filter div*/
-
-/*Settings for filter div*/
-
 /*Settings for Delete button*/
 
 .delprop{
@@ -60,6 +56,73 @@ header{
     align-items: flex-start;
 }
 /*Settings for delete button*/
+
+/*Settings for filter div*/
+.filter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:85%;
+    height: 5rem;
+    margin-top: -3%;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 5px 15px 0px hsl(180, 30%, 80%);
+}
+
+#btnDiv{
+    display: inline;   
+    margin-right: 0px;
+    padding-right: 20px;
+    margin-left: 10px;
+}
+
+#clearPos{
+    padding: 4%;
+    float: right;
+}
+
+#clearBtn{
+    color: hsl(180, 8%, 52%);
+    background-color: white;
+    border: none;
+    font-family: 'League Spartan', serif;
+}
+
+#clearBtn:hover{
+    color: hsl(180, 29%, 50%);
+    text-decoration: underline;
+}
+
+.crossBtn{
+    color: white;
+    background-color: hsl(180, 29%, 50%);
+    border: none;
+    padding: 5px 9px;
+    margin-left: 5px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+.crossBtn:hover{
+    background-color: hsl(180, 14%, 20%);
+}
+
+.spaceBtn{
+    font-family: 'League Spartan', serif;
+    margin: 4px;
+    padding-left: 4px;
+    padding-top: 9px;
+    padding-bottom: 6px; 
+    font-size: 12px;
+    color: hsl(180, 29%, 50%);
+    background-color: hsl(180, 31%, 95%);
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+}
+
+/*Settings for filter div*/
 
 /*Setting for job container div*/
 .job{
@@ -227,7 +290,7 @@ div .posDetails{
     margin: 1%;
 }
 
-.btnSettings:hover{
+.flexTools .btnSettings:hover{
     color: white;
     background-color: hsl(180, 29%, 50%);
 }
@@ -235,6 +298,10 @@ div .posDetails{
 
 /*Settings for responsivness of main containers*/
 @media screen and (max-width: 450px) {
+    .filter{
+        margin-top: -10%;
+    }
+
     .job{
         margin-top: 20%;
         flex-wrap: wrap;

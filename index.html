@@ -16,11 +16,16 @@
     <header><!--Header image and background--> </header> <!--Check header settings in style-->
 
     <div class="flexBody"><!--Rest of the body (position relative)-->
-        <div class="filter"><!--This is for the filter section(position absolute)-->
-            
+        <div class="filter" style="display: none;"><!--This is for the filter section(position absolute)-->
+            <div id="btnDiv">
+                <!--<span class="spaceBtn" data-value="Frontend" style="display: none;">Frontend<button class="crossBtn">X</button></span>-->
+            </div>            
+            <div id="clearPos"><!--Clear-->
+                <button id="clearBtn">Clear</button>
+            </div>
         </div>
 
-        <div class="job" data-value="1" style="display: none;"><!--Job listings White container-->
+        <div class="job" data-value="0" style="display: none;"><!--Job listings White container-->
             <div class="hide" data-value="1">
                 <button class="delprop">X</button>
             </div>

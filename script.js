@@ -3,6 +3,53 @@ $(document).ready(function(){
         console.log(data); 
         $.fn.DisplayData(data)
 
+        //Filter Div Functionality
+        var addedFilters=[]
+
+        $(document).on("click", ".btn", function(){
+            if($(".filter").css("display")=="none"){
+                $(".filter").show()
+            }
+
+            var value=$(this).attr("value")
+            if (addedFilters.indexOf(value)==-1){
+                
+                $.fn.ShowFiltBtn(value)
+                //Filtering out the same value
+                $(".job:not(:has(.btn[value='" + value + "']))").hide(); 
+                
+                addedFilters.push(value);
+            }         
+        });
+
+        //cross button
+        $(document).on("click", ".crossBtn", function(){
+            var Remove=$(this).closest('.spaceBtn').attr("data-value");
+            console.log(Remove)
+            $(this).closest('.spaceBtn').remove();
+            $(".job:not(:has(.btn[value='" + Remove + "']))").show(); 
+            $('.job[data-value="0"]').hide()//hiding the dummy htm
+
+            addedFilters = addedFilters.filter(value => value!=Remove);
+
+            console.log(addedFilters)
+
+            if(addedFilters.length==0){
+                $(".filter").css("display", "none");
+            }
+        })
+        //cross button
+
+        //Clear button
+        $(document).on ("click", "#clearBtn", function(){
+            $(".filter").css("display", "none");
+            $(".job").show();
+            $('.job[data-value="0"]').hide()//hiding the dummy html
+        });
+        //Clear button
+        
+        //Filter Div Functionality
+
         //pop up functionality
         $(document).on ("click", "#jobClick", function () {
             var id=$(this).attr("value")
@@ -10,25 +57,6 @@ $(document).ready(function(){
             $.fn.ShowPop(info)
         });
         //pop up functionality
-
-        //Functionality to show delete button on hover
-        $(".job").on({
-            mouseenter: function(){
-                var id=$(this).attr("data-value")
-                $.fn.DelButton(id)
-
-                $(this).on("click", ".delprop", function(){
-                    data=data.filter(element=> element.id!=id)
-                    console.log(data)
-                    $(this).closest('.job').remove();
-                });
-                
-            },
-            mouseleave: function(){
-                $(".hide").css("display", "none")
-            }
-        });
-        //Functionality to show delete button on hover
 
         //Add Form Functionality
         $(document).on("click", "#addBtn", function(){
@@ -53,6 +81,7 @@ $(document).ready(function(){
         });
         //Add Form Functionality
 
+
     })//end tag of get data.json
     .fail(function(){console.log("An error has occurred in get function.");});
 
@@ -69,13 +98,13 @@ $(document).ready(function(){
 
     $.fn.AddElement=function(element, app){
         //creating a new job white container
-        var $job=$(' <div class="job" data-value="'+ element.id+ '"></div>')
+        var $job=$('<div class="job" data-value="'+ element.id+ '"></div>')
 
         //creating hide button
         var $hide=$('<div class="hide" data-value="'+ element.id+ '"></div>')
         var $del=$('<button class="delprop">X</button>')
 
-        $hide.append($del)
+        $hide.append($del);
         //creating hide button
 
         //creating a new flexJob
@@ -155,6 +184,27 @@ $(document).ready(function(){
         else if (app=='prepend'){
             $('.flexBody').prepend($job)
         }
+
+        //Functionality to show delete button on hover
+        $(".job").on({
+            mouseenter: function(){
+                var id=$(this).attr("data-value")
+                //$.fn.DelButton(id)
+                $(".hide[data-value='" + id + "']").css("display", "inline");
+                $(".hide").not("[data-value='" + id + "']").css("display", "none");
+
+                $(this).on("click", ".delprop", function(){
+                    data=data.filter(element=> element.id!=id)
+                    console.log(data)
+                    $(this).closest('.job').remove();
+                });
+                
+            },
+            mouseleave: function(){
+                $(".hide").css("display", "none")
+            }
+        });
+        //Functionality to show delete button on hover
         
     }
 
@@ -241,8 +291,8 @@ $(document).ready(function(){
     };
 
     $.fn.DelButton=function(id){//This function displays del button
-        $(".hide[data-value='" + id + "']").css("display", "inline")
-        $(".hide").not("[data-value='" + id + "']").css("display", "none");
+        //$(".hide[data-value='" + id + "']").css("display", "inline")
+        
     };
 
     $.fn.AddData=function(data, element){
@@ -253,7 +303,6 @@ $(document).ready(function(){
 
         $(document).on("click", "#saveForm", function(){
             $.fn.SaveData(data, element)
-
         });
     };
 
@@ -312,7 +361,8 @@ $(document).ready(function(){
                 element.id=element.id+1
             })
 
-            $.fn.AddElement(element, 'prepend')
+            $(".job").remove()
+            $.fn.DisplayData(data)
 
             $(".addpopupContainer").fadeOut("slow")
         }
@@ -336,4 +386,12 @@ $(document).ready(function(){
             element.logo="./images/the-air-filter-company.svg"
         }
     }
+
+    $.fn.ShowFiltBtn=function(value){
+        let btnDiv=$("#btnDiv")
+        var $filt=$('<span class="spaceBtn" data-value="' + value + '">' + value + '<button class="crossBtn">X</button></span>')
+        btnDiv.append($filt)
+    }
+
 });//end tag of ready function
+
