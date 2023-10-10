@@ -91,12 +91,12 @@ $(document).ready(function(){
         //appending white job container 
             data.forEach(element => {
 
-            $.fn.AddElement(element, 'append')
+            $.fn.AddElement(element, 'append', data)
             
         });//end tag of data loop
     };
 
-    $.fn.AddElement=function(element, app){
+    $.fn.AddElement=function(element, app, data){
         //creating a new job white container
         var $job=$('<div class="job" data-value="'+ element.id+ '"></div>')
 
